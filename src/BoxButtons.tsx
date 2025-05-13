@@ -1,10 +1,10 @@
-import React, {ReactNode} from 'react';
+import {ReactNode} from 'react';
 
 type Props = {
   children: ReactNode
 }
 
-const BoxButtons = ({children}: Props) => {
+export const BoxButtons = ({children}: Props) => {
   return (
     <div className='button-wrapper'>
       {children}
@@ -12,4 +12,3 @@ const BoxButtons = ({children}: Props) => {
   );
 };
 
-export default BoxButtons;

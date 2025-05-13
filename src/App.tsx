@@ -1,8 +1,8 @@
 import './App.css'
-import Counter2 from "./Counter2.tsx";
+import {Counter} from "./Counter.tsx";
 import {useState} from "react";
 
-function App2() {
+function App() {
 
   const [minVal, setMinVal] = useState(0)
   const [maxVal, setMaxVal] = useState(5)
@@ -40,7 +40,7 @@ function App2() {
 
   return (
     <>
-      <Counter2
+      <Counter
         changeMinVal={changeMinVal}
         changeMaxVal={changeMaxVal}
         minVal={minVal}
@@ -54,4 +54,4 @@ function App2() {
 
 }
 
-export default App2
+export default App

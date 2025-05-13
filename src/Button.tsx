@@ -4,7 +4,7 @@ type Props = {
   disabled?: boolean
 }
 
-const Button2 = ({title, onClick, disabled }: Props) => {
+export const Button = ({title, onClick, disabled }: Props) => {
   return (
     <button className='counter-button'
             onClick={onClick}
@@ -15,4 +15,3 @@ const Button2 = ({title, onClick, disabled }: Props) => {
   );
 };
 
-export default Button2;

@@ -1,6 +1,6 @@
-import BoxButtons from "./BoxButtons.tsx";
-import Button2 from "./Button2.tsx";
-import {DisplayCounter2} from "./DisplayCounter2.tsx";
+import {BoxButtons} from "./BoxButtons.tsx";
+import {Button} from "./Button.tsx";
+import {DisplayCounter} from "./DisplayCounter.tsx";
 import {useEffect, useState} from "react";
 import {Input} from "./Input.tsx";
 
@@ -14,7 +14,7 @@ type Props = {
   error: string
 }
 
-const Counter2 = ({
+export const Counter = ({
                     minVal,
                     maxVal,
                     toggle,
@@ -43,22 +43,22 @@ const Counter2 = ({
   }
   return (
     <div className='counter'>
-      <DisplayCounter2>
+      <DisplayCounter>
         {isEdit ? <span className={count === maxVal ? 'red' : 'black'}>{count}</span> :
           <>
             <Input title={'min value is'} value={minVal} onChange={changeMinVal}/>
             <Input title={'max value is'} value={maxVal} onChange={changeMaxVal}/>
           </>
         }
-      </DisplayCounter2>
+      </DisplayCounter>
       <BoxButtons>
         {!isEdit ? (
-          <Button2 title={'Set'} onClick={toggle} disabled={!!error}/>
+          <Button title={'Set'} onClick={toggle} disabled={!!error}/>
         ) : (
           <>
-            <Button2 title={'Inc'} onClick={incVal} disabled={count === maxVal}/>
-            <Button2 title={'Reset'} onClick={resetVal} disabled={count === minVal}/>
-            <Button2 title={'Set'} onClick={toggle} disabled={!!error}/>
+            <Button title={'Inc'} onClick={incVal} disabled={count === maxVal}/>
+            <Button title={'Reset'} onClick={resetVal} disabled={count === minVal}/>
+            <Button title={'Set'} onClick={toggle} disabled={!!error}/>
           </>
         )}
 
@@ -67,4 +67,3 @@ const Counter2 = ({
   );
 };
 
-export default Counter2;

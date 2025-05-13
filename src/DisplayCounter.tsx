@@ -1,10 +1,10 @@
-import React, {ReactNode} from 'react';
+import {ReactNode} from 'react';
 
 type Props = {
   children: ReactNode
 }
 
-export const DisplayCounter2 = ({children}: Props) => {
+export const DisplayCounter = ({children}: Props) => {
   return (
     <div className='counter-display'>
       {children}
