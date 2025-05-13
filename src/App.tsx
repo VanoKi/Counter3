@@ -1,74 +1,57 @@
 import './App.css'
-import {Counter} from "./components/counter/Counter.tsx";
+import Counter2 from "./Counter2.tsx";
 import {useState} from "react";
 
-function App() {
+function App2() {
 
-    const maxValue = 5
-    const minValue = 0
+  const [minVal, setMinVal] = useState(0)
+  const [maxVal, setMaxVal] = useState(5)
 
-    const [minValue, setMinValue] = useState<number>(0);
-    const [maxValue, setMaxValue] = useState<number>(5);
+  const [isEdit, setIsEdit] =useState(true)
 
-    const [counterValue, setCounterValue] = useState<number>(0);
+  const [error, setError] = useState('')
+  console.log(error)
 
-    const [isEdit,setIsEdit] = useState(false);
+  const toggle = () => {
+      setIsEdit(!isEdit)
+    // console.log(minVal)
+    // console.log(maxVal)
+  }
 
-    const [error, setError] = useState("");
-
-
-    const onClickToggleHandler = () => {
-        setIsEdit(prevState => !prevState);
+  const changeMinVal = (val: number) => {
+    if (val < 0) {
+      setError('val should be bigger than 0')
+    } else if (val >= maxVal) {
+      setError('min value must be less than max value')
+    } else {
+      setError('')
+      setMinVal(val)
     }
+  }
 
-    const setMin = (value: number) => {
-        if ( value < 0  ) {
-            setError('Значение не может быть меньше нуля')
-        }  else if(value >= maxValue){
-            setError('Минимальное значение не может быть больше максимального')
-        }
-        else {
-            setError('')
-        }
-        setMinValue(value);
+  const changeMaxVal = (val: number) => {
+    if (val <= minVal) {
+      setError('max === min')
+    } else {
+      setError('')
+      setMaxVal(val)
     }
-    const setMax = (value: number) => {
-        if ( value <= minValue ) {
-            setError('Минимальное значение не может быть больше максимального')
-        } else {
-            setError('')
-        }
-        setMaxValue(value);
-    }
+  }
 
-    const incCounter = () => {
-        if (minValue < maxValue) {
-            setCounterValue(counterValue+1)
-        }
-    }
-
-    const resCounter = () => {
-        setCounterValue(minValue)
-    }
-
-
-    return (
-        <>
-            <Counter
-                counterValue = {counterValue}
-                incCounter ={incCounter}
-                resCounter={resCounter}
-                minValue={minValue}
-                maxValue={maxValue}
-                isEdit={isEdit}
-                onClickToggleHandler = {onClickToggleHandler}
-                setMin ={setMin}
-                setMax ={setMax}
-                error = {error}
-            />
-        </>
-    )
+  return (
+    <>
+      <Counter2
+        changeMinVal={changeMinVal}
+        changeMaxVal={changeMaxVal}
+        minVal={minVal}
+        maxVal={maxVal}
+        toggle={toggle}
+        isEdit={isEdit}
+        error={error}
+      />
+    </>
+  )
 
 }
 
-export default App
+export default App2
