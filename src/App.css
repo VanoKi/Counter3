@@ -19,8 +19,9 @@
 
 .button-wrapper{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 35px;
   border: 3px solid #005AA7;
   padding: 20px;
   border-radius: 20px;
