@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid #005AA7;
+  border: 3px solid #005AA7;
   padding: 20px;
   border-radius: 20px;
 }
