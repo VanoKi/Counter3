@@ -11,7 +11,7 @@ type Props = {
   isEdit: boolean
   changeMinVal: (val:number) => void,
   changeMaxVal: (val:number) => void,
-  error: string
+  error: boolean
 }
 
 export const Counter = ({
