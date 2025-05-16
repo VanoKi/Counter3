@@ -21,21 +21,16 @@ export const Counter = ({
                     isEdit,
                     changeMinVal,
                     changeMaxVal,
-                    error}: Props) => {
+                    error,
+}: Props) => {
   const [count, setCount] =useState(minVal)
   useEffect(() => {
     setCount(minVal)
     }, [minVal])
 
-  // console.log('rerender')
-  // useEffect(()=> {
-  //   console.log(count)}, [count])
   const incVal = () => {
     if (count < maxVal) {
       setCount(prevCount => prevCount + 1)
-      // setTimeout(()=> {
-      //   console.log(count)}, 2000)
-      // setCount(prevCount => prevCount + 1)
     }
   }
   const resetVal = () => {
@@ -48,8 +43,16 @@ export const Counter = ({
       <DisplayCounter>
         {isEdit ? <span className={count === maxVal ? 'red' : 'black'}>{count}</span> :
           <>
-            <Input title={'min value is'} value={minVal} onChange={changeMinVal}/>
-            <Input title={'max value is'} value={maxVal} onChange={changeMaxVal}/>
+            <Input
+              error={error}
+              title={'min value is'}
+                   value={minVal}
+                   onChange={changeMinVal}/>
+            <Input
+              error={error}
+                   title={'max value is'}
+                   value={maxVal}
+                   onChange={changeMaxVal}/>
           </>
         }
       </DisplayCounter>

@@ -4,8 +4,9 @@ type Props = {
   title: string
   value: number
   onChange: (val: number) => void
+  error: boolean
 };
-export const Input = ({value, title, onChange}: Props) => {
+export const Input = ({value, title, onChange, error}: Props) => {
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(Number(e.currentTarget.value))
@@ -14,7 +15,12 @@ export const Input = ({value, title, onChange}: Props) => {
   return (
     <label className={'label-count'}>
       <span>{title}</span>
-      <input type="number" value={value} onChange={onChangeHandler}/>
+      <input
+        type="number"
+        value={value}
+        onChange={onChangeHandler}
+        className={error ? 'input-error' : ''}
+      />
     </label>
   );
 };
