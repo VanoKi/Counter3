@@ -1,6 +1,6 @@
 import './App.css'
 import {Counter} from "./Counter.tsx";
-import {useState} from "react";
+import {Fragment, useState} from "react";
 
 function App() {
 
@@ -8,8 +8,7 @@ function App() {
   const [maxVal, setMaxVal] = useState(5)
 
   const [isEdit, setIsEdit] =useState(true)
-
-  const [error, setError] = useState('')
+  const [error, setError] = useState(false)
   console.log(error)
 
   const toggle = () => {
@@ -19,27 +18,39 @@ function App() {
   }
 
   const changeMinVal = (val: number) => {
-    if (val < 0) {
+    /*if (val < 0) {
       setError('val should be bigger than 0')
     } else if (val >= maxVal) {
       setError('min value must be less than max value')
     } else {
       setError('')
       setMinVal(val)
+    }*/
+    setMinVal(val)
+    if (val < 0 || val > maxVal) {
+      setError(true)
+    } else {
+      setError(false)
     }
   }
 
   const changeMaxVal = (val: number) => {
-    if (val <= minVal) {
+    /*if (val <= minVal) {
       setError('max === min')
     } else {
       setError('')
       setMaxVal(val)
+    }*/
+    setMaxVal(val)
+    if (val < minVal || val < 0 || val === minVal) {
+      setError(true)
+    } else {
+      setError(false)
     }
   }
 
   return (
-    <>
+    <Fragment>
       <Counter
         changeMinVal={changeMinVal}
         changeMaxVal={changeMaxVal}
@@ -49,7 +60,7 @@ function App() {
         isEdit={isEdit}
         error={error}
       />
-    </>
+    </Fragment>
   )
 
 }

@@ -41,6 +41,8 @@ export const Counter = ({
   const resetVal = () => {
     setCount(minVal)
   }
+  console.log(count)
+
   return (
     <div className='counter'>
       <DisplayCounter>
@@ -58,7 +60,7 @@ export const Counter = ({
           <>
             <Button title={'Inc'} onClick={incVal} disabled={count === maxVal}/>
             <Button title={'Reset'} onClick={resetVal} disabled={count === minVal}/>
-            <Button title={'Set'} onClick={toggle} disabled={!!error}/>
+            <Button title={'Set'} onClick={toggle} disabled={error}/>
           </>
         )}
 
