@@ -42,7 +42,7 @@ function App() {
       setMaxVal(val)
     }*/
     setMaxVal(val)
-    if (val < minVal || val < 0 || val === minVal) {
+    if (val <= minVal || val < 0) {
       setError(true)
     } else {
       setError(false)
